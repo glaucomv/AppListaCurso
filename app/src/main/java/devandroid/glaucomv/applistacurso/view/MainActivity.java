@@ -11,20 +11,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import devandroid.glaucomv.applistacurso.R;
+import devandroid.glaucomv.applistacurso.controller.CursoController;
 import devandroid.glaucomv.applistacurso.controller.PessoaController;
+import devandroid.glaucomv.applistacurso.model.Curso;
 import devandroid.glaucomv.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
 
     PessoaController controller;
+    CursoController cursoController;
     Pessoa pessoa;
     Pessoa outraPessoa;
 
     EditText editPrimeiroNome;
     EditText editSobreNomeAluno;
-    Spinner spinnerCurso;
+    List<Curso> listaDeCursos;
     EditText editTelefoneContato;
 
     Button btnLimpar;
@@ -38,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new PessoaController(MainActivity.this);
         controller.toString();
+
+        cursoController = new CursoController();
+        listaDeCursos = cursoController.getListaDeCursos();
 
         pessoa = new Pessoa();
         controller.buscar(pessoa);
