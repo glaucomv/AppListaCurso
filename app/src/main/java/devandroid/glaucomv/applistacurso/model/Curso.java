@@ -2,17 +2,19 @@ package devandroid.glaucomv.applistacurso.model;
 
 public class Curso {
 
-    private String nomeCursoDesejado;
+    private String nomeDoCursoDesejado;
 
-    public Curso(String nomeCursoDesejado) {
-        this.nomeCursoDesejado = nomeCursoDesejado;
+    public Curso(String nomeDoCursoDesejado) {
+        this.nomeDoCursoDesejado = nomeDoCursoDesejado;
     }
 
-    public String getNomeCursoDesejado() {
-        return nomeCursoDesejado;
+    public String
+    getNomeDoCursoDesejado() {
+        return nomeDoCursoDesejado;
     }
 
-    public void setNomeCursoDesejado(String nomeCursoDesejado) {
-        this.nomeCursoDesejado = nomeCursoDesejado;
+    public void
+    setNomeDoCursoDesejado(String nomeDoCursoDesejado) {
+        this.nomeDoCursoDesejado = nomeDoCursoDesejado;
     }
 }

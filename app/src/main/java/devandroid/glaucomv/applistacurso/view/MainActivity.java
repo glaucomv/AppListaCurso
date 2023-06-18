@@ -1,5 +1,8 @@
 package devandroid.glaucomv.applistacurso.view;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,13 +12,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 import devandroid.glaucomv.applistacurso.R;
 import devandroid.glaucomv.applistacurso.controller.CursoController;
 import devandroid.glaucomv.applistacurso.controller.PessoaController;
+import devandroid.glaucomv.applistacurso.model.Curso;
 import devandroid.glaucomv.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,18 +26,20 @@ public class MainActivity extends AppCompatActivity {
 
     PessoaController controller;
     CursoController cursoController;
+
     Pessoa pessoa;
-    Pessoa outraPessoa;
+    List<String> nomesDosCursos;
 
     EditText editPrimeiroNome;
     EditText editSobreNomeAluno;
-    List<String> nomesDosCursos;
-    Spinner spinner;
+    EditText editNomeCurso;
     EditText editTelefoneContato;
 
     Button btnLimpar;
     Button btnSalvar;
     Button btnFinalizar;
+
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +49,20 @@ public class MainActivity extends AppCompatActivity {
         controller = new PessoaController(MainActivity.this);
         controller.toString();
 
+
+
         pessoa = new Pessoa();
         controller.buscar(pessoa);
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobreNomeAluno = findViewById(R.id.editSobreNomeAluno);
+        editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
+
 
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobreNomeAluno.setText(pessoa.getSobreNome());
-        //spinnerCurso.setText(pessoa.get());
+        editNomeCurso.setText(pessoa.getCursoDesejado());
         editTelefoneContato.setText(pessoa.getTelefoneContato());
 
         btnLimpar = findViewById(R.id.btnLimpar);
@@ -62,15 +71,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Adapter
         // Layout
-        // Injetar o Adapter ao Spinner -> a lista será gerada
+        // Injetar o Adapter ao Spinner - A lista gera gerada
         cursoController = new CursoController();
         nomesDosCursos = cursoController.dadosParaSpinner();
-        spinner = findViewById(R.id.spinnerCurso);
+        spinner = findViewById(R.id.spinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        cursoController.dadosParaSpinner();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,
+                cursoController.dadosParaSpinner());
+
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
         spinner.setAdapter(adapter);
+
+
+
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 editPrimeiroNome.setText("");
                 editSobreNomeAluno.setText("");
                 editTelefoneContato.setText("");
-                //editNomeCurso.setText("");
+                editNomeCurso.setText("");
+
 
                 controller.limpar();
+
             }
         });
 
@@ -98,10 +115,11 @@ public class MainActivity extends AppCompatActivity {
 
                 pessoa.setPrimeiroNome(editPrimeiroNome.getText().toString());
                 pessoa.setSobreNome(editSobreNomeAluno.getText().toString());
-                //pessoa.setCursoDesejado(editNomeCurso.getText().toString());
+                pessoa.setCursoDesejado(editNomeCurso.getText().toString());
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
+
 
                 controller.salvar(pessoa);
 
