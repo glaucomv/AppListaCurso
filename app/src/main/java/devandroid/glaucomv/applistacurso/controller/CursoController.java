@@ -25,6 +25,20 @@ public class CursoController {
         listCursos.add(new Curso("Dart"));
 
         return listCursos;
+    }
+
+    public ArrayList<String> dadosParaSpinner(){
+
+        ArrayList<String> dados = new ArrayList<>();
+
+        for (int i = 0; i < getListaDeCursos().size(); i++) {
+
+            Curso objeto = (Curso) getListaDeCursos().get(i);
+            dados.add(objeto.getNomeCursoDesejado());
+
+        }
+
+        return dados;
 
     }
 
