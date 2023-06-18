@@ -1,6 +1,5 @@
 package devandroid.glaucomv.applistacurso.model;
 
-
 // OrdemDePagamento - pascalCase - CamelCase
 public class Pessoa {
 
