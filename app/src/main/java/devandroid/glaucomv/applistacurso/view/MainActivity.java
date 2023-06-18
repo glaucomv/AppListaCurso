@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editPrimeiroNome;
     EditText editSobreNomeAluno;
-    EditText editNomeCurso;
+    Spinner spinnerCurso;
     EditText editTelefoneContato;
 
     Button btnLimpar;
@@ -43,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobreNomeAluno = findViewById(R.id.editSobreNomeAluno);
-        editNomeCurso = findViewById(R.id.editNomeCurso);
+        spinnerCurso = findViewById(R.id.spinnerCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
 
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobreNomeAluno.setText(pessoa.getSobreNome());
-        editNomeCurso.setText(pessoa.getCursoDesejado());
+        spinnerCurso.setText(pessoa.get());
         editTelefoneContato.setText(pessoa.getTelefoneContato());
 
         btnLimpar = findViewById(R.id.btnLimpar);
