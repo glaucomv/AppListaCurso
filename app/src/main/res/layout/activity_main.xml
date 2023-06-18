@@ -10,8 +10,8 @@
         android:id="@+id/txtTituloApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/vermelho"
         android:layout_marginTop="100dp"
+        android:background="@color/vermelho"
         android:text="@string/txt_titulo"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -28,8 +28,8 @@
         android:layout_marginTop="100dp"
         android:autofillHints=""
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/txt_hint_edit_primeiro_nome"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTituloApp" />
@@ -48,19 +48,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPrimeiroNome" />
 
-    <EditText
-        android:id="@+id/editNomeCurso"
+    <TextView
+        android:id="@+id/txtNomeCurso"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="20dp"
         android:layout_margin="16dp"
         android:layout_marginTop="100dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/txt_hint_edit_nome_do_curso"
-        android:inputType="textPersonName"
+        android:text="@string/txt_sel_curso"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editSobreNomeAluno" />
+
+    <Spinner
+        android:id="@+id/spinnerCurso"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeCurso" />
 
     <EditText
         android:id="@+id/editTelefoneContato"
@@ -74,7 +83,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNomeCurso" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCurso" />
 
     <Button
         android:id="@+id/btnLimpar"
